@@ -3,11 +3,13 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import LoginScreen from './src/screens/Login/LoginScreen';
 import HomeScreen from './src/screens/Home/HomeScreen';
+import PayScreen from './src/screens/Payment/PayScreen';
 
 export default function App() {
   return (
     // <LoginScreen/>
-    <HomeScreen/>
+    // <HomeScreen/>
+    <PayScreen/>
   );
 }
 

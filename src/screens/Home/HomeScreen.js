@@ -5,8 +5,12 @@ import { Feather } from "@expo/vector-icons";
 const bookList = [{"id":"0", "name":"Mary Poppins", "author":"P.LTowers", "image":require("../../../assets/book1.png")}, {"id":"1", "name":"Jog On", "author":"Bella Macke", "image":require("../../../assets/book3.png")}, {"id":"2", "name":"Ninth Street", "author":"P.LTowers", "image":require("../../../assets/book4.png")},
 {"id":"3", "name":"Mary Down", "author":"P.LTowers", "image":require("../../../assets/book5.png")}]
 
+const bookList2 = [{"id":"0", "name":"Mary Poppins", "author":"P.LTowers", "image":require("../../../assets/book6.jpeg")}, {"id":"1", "name":"Jog On", "author":"Bella Macke", "image":require("../../../assets/book7.png")}, {"id":"2", "name":"Ninth Street", "author":"P.LTowers", "image":require("../../../assets/book8.jpeg")},
+{"id":"3", "name":"Mary Down", "author":"P.LTowers", "image":require("../../../assets/book9.jpeg")}]
+
 const HomeScreen = () => {
-    const[books, useBooks] = useState(bookList);
+    const[books, setBooks] = useState(bookList);
+    const[newbooks, setNewbooks] = useState(bookList2);
     return(
         <View style={{flex:1, padding:20, backgroundColor:"#F9F9F9"}}>
             <View style={{paddingTop:40, flexDirection:"row"}}>
@@ -15,7 +19,7 @@ const HomeScreen = () => {
                 </View>
                 <View>
                 <Feather
-          style={{ paddingLeft: 160 }}
+          style={{ paddingLeft: 200 }}
           name="align-justify"
           size={30}
           color="black"
@@ -36,7 +40,7 @@ const HomeScreen = () => {
               <TextInput
               placeholder="Hey, Search here"/>
                <Feather
-          style={{paddingLeft:80}}
+          style={{paddingLeft:110}}
           name="search"
           size={24}
           color="black"
@@ -87,13 +91,37 @@ const HomeScreen = () => {
                 <Text style={{fontWeight:"bold", fontSize:20}}>Recommended eBook</Text>
             </View>
 
-            <View style={{paddingTop:20}}>
-
-                <View style={{}}>
-                   <Image source={require('../../../assets/book5.png')} style={{width:110, height:190}}/>
-                   <Text>dnkdn</Text>
-                   <Text>nkjdm,</Text>
+            <View style={{paddingTop:20, flexDirection:"row", }}>
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                {books && books.map((book=>{
+                    return(
+                    <View style={{marginRight:15}}>
+                   <Image source={book.image} style={{width:92, height:150, borderRadius:10}}/>
+                   <Text style={{paddingTop:10, fontWeight:"700"}}>{book.name}</Text>
+                   <Text style={{paddingTop:5, fontWeight:"400"}}>{book.author}</Text>
                 </View>
+                    )
+                }))}
+                </ScrollView>        
+            </View>
+
+            <View style={{paddingTop:30, flexDirection:"row"}}>
+                <Text style={{fontWeight:"bold", fontSize:20}}>Popular AudioBook</Text>
+                <Text style={{paddingLeft:150, fontWeight:"bold"}}>More</Text>
+            </View>
+
+            <View style={{paddingTop:20, flexDirection:"row", }}>
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                {newbooks && newbooks.map((newbook=>{
+                    return(
+                    <View style={{marginRight:15}}>
+                   <Image source={newbook.image} style={{width:92, height:150, borderRadius:10}}/>
+                   <Text style={{paddingTop:10, fontWeight:"700"}}>{newbook.name}</Text>
+                   <Text style={{paddingTop:5, fontWeight:"400"}}>{newbook.author}</Text>
+                </View>
+                    )
+                }))}
+                </ScrollView>        
             </View>
         </View>
     );
